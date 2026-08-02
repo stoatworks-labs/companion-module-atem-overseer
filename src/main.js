@@ -112,7 +112,7 @@ export default class ModuleInstance extends InstanceBase {
     }
     this.connected = true;
     this.refreshVariableValues();
-    this.checkFeedbacks();
+    this.checkAllFeedbacks();
   }
 
   /**
@@ -142,7 +142,7 @@ export default class ModuleInstance extends InstanceBase {
     UpdateVariableDefinitions(this);
     UpdatePresets(this);
     this.refreshVariableValues();
-    this.checkFeedbacks();
+    this.checkAllFeedbacks();
   }
 
   device(id) {
