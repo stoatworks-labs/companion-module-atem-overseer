@@ -1,3 +1,8 @@
+// Variable references in preset text use `self.label`, the CONNECTION's label,
+// not the module id. Companion resolves $(label:variable) against whatever the
+// operator named this connection — hardcoding the module id produces buttons
+// that render the raw $(...) text on any connection that has been renamed, and
+// on a second instance of the same module.
 import { safeId } from "./main.js";
 
 // Per-device presets are generated from the fleet, because a fleet's device ids
@@ -72,7 +77,7 @@ export default function UpdatePresets(self) {
 
   presets.fleet_all_recording = preset({
     name: "ALL rolling (no action) — the pre-take check",
-    text: "ALL REC\n$(atem-overseer:recording_count)/$(atem-overseer:online_count)",
+    text: `ALL REC\n$(${self.label}:recording_count)/$(${self.label}:online_count)`,
     bgcolor: RED,
     feedbacks: [
       {
@@ -106,7 +111,7 @@ export default function UpdatePresets(self) {
 
   presets.fleet_online = preset({
     name: "Whole fleet connected (no action)",
-    text: "FLEET\n$(atem-overseer:online_count)/$(atem-overseer:device_count)",
+    text: `FLEET\n$(${self.label}:online_count)/$(${self.label}:device_count)`,
     bgcolor: RED,
     feedbacks: [
       {
@@ -119,7 +124,7 @@ export default function UpdatePresets(self) {
 
   presets.overseer_connected = preset({
     name: "Overseer is connected",
-    text: "OVERSEER\n$(atem-overseer:connection_status)",
+    text: `OVERSEER\n$(${self.label}:connection_status)`,
     bgcolor: RED,
     actions: [{ actionId: "refresh", options: {} }],
     feedbacks: [
@@ -171,7 +176,7 @@ export default function UpdatePresets(self) {
       "record",
       preset({
         name: `${label}: record toggle`,
-        text: `${label}\nREC\n$(atem-overseer:${key}_record_duration)`,
+        text: `${label}\nREC\n$(${self.label}:${key}_record_duration)`,
         size: "14",
         bgcolor: BLACK,
         actions: [{ actionId: "record", options: { id, mode: "toggle" } }],
@@ -196,7 +201,7 @@ export default function UpdatePresets(self) {
       "stream",
       preset({
         name: `${label}: stream toggle`,
-        text: `${label}\nSTREAM\n$(atem-overseer:${key}_stream_bitrate)`,
+        text: `${label}\nSTREAM\n$(${self.label}:${key}_stream_bitrate)`,
         bgcolor: BLACK,
         actions: [{ actionId: "stream", options: { id, mode: "toggle" } }],
         feedbacks: [
@@ -252,7 +257,7 @@ export default function UpdatePresets(self) {
       "disk",
       preset({
         name: `${label}: recording headroom (no action)`,
-        text: `${label}\n$(atem-overseer:${key}_record_minutes_left) min`,
+        text: `${label}\n$(${self.label}:${key}_record_minutes_left) min`,
         bgcolor: BLACK,
         feedbacks: [
           {
@@ -268,7 +273,7 @@ export default function UpdatePresets(self) {
       "online",
       preset({
         name: `${label}: connected (no action)`,
-        text: `${label}\n$(atem-overseer:${key}_connection)`,
+        text: `${label}\n$(${self.label}:${key}_connection)`,
         bgcolor: RED,
         feedbacks: [
           {
@@ -301,7 +306,7 @@ export default function UpdatePresets(self) {
       "cache",
       preset({
         name: `${label}: stream cache (no action)`,
-        text: `${label}\nCACHE\n$(atem-overseer:${key}_stream_cache_pct)%`,
+        text: `${label}\nCACHE\n$(${self.label}:${key}_stream_cache_pct)%`,
         bgcolor: BLACK,
         feedbacks: [
           {
