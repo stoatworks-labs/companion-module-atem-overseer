@@ -5,6 +5,7 @@ import UpdateFeedbacks from "./feedbacks.js";
 import UpdateVariableDefinitions from "./variables.js";
 import UpdatePresets from "./presets.js";
 import { socket } from "./api.js";
+import { aboutField } from './about-field.js'
 
 /** Companion variable ids allow only [a-zA-Z0-9_]. Overseer device ids come
  *  from its config file and are free text. */
@@ -82,6 +83,10 @@ export default class ModuleInstance extends InstanceBase {
         value:
           "Headroom is <code>timeAvailable</code>, which is <b>seconds of recording time, not disk bytes</b> — the ATEM protocol does not expose capacity at all. Treat it as the switcher's own estimate at the current bitrate.",
       },
+    
+    	// Vendored from stoatworks-backend/about. A Companion module has no
+    	// UI of its own, so this config panel is the only surface it has.
+    	aboutField(),
     ];
   }
 
