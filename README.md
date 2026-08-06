@@ -9,6 +9,21 @@ A [Bitfocus Companion](https://bitfocus.io/companion) connection module for
 [Atem Overseer](https://github.com/stoatworks-labs/atem-overseer) — run record
 and stream across a fleet of Blackmagic ATEM switchers from one surface.
 
+<!-- downloads:start -->
+
+## Download
+
+**[v1.0.0](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/tag/v1.0.0)**
+
+This release contains:
+
+- [`atem-overseer-1.0.0.tgz`](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/download/v1.0.0/atem-overseer-1.0.0.tgz) — npm package, 24 KB
+- [`companion-module-atem-overseer-pkg.tgz`](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/latest/download/companion-module-atem-overseer-pkg.tgz) — npm package, 24 KB
+
+All builds, checksums and release notes: [github.com/stoatworks-labs/companion-module-atem-overseer/releases](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases).
+
+<!-- downloads:end -->
+
 ## What it does
 
 - **Actions** — record and stream start/stop/toggle per switcher **and across
