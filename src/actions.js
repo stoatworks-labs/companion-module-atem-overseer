@@ -37,8 +37,11 @@ export default function UpdateActions(self) {
     }
   };
 
-  const resolveId = async (event) =>
-    (await self.parseVariablesInString(String(event.options.id ?? ""))).trim();
+  // Options declared `useVariables: true` arrive already expanded: Companion
+  // resolves them before invoking the callback. `parseVariablesInString` does
+  // not exist in base 2.x — on the context or on InstanceBase — and calling it
+  // throws when the action fires, while the module still loads cleanly.
+  const resolveId = (event) => String(event.options.id ?? "").trim();
 
   /** 'start' | 'stop' from a mode option, resolving 'toggle' against the
    *  device's own last-reported status. Returns null when it cannot be
@@ -71,7 +74,7 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           const status = self.device(id)?.record?.status;
           const action = resolveAction(event.options.mode, status, [
@@ -141,7 +144,7 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           await post(
             self,
@@ -169,7 +172,7 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           const status = self.device(id)?.stream?.status;
           const action = resolveAction(event.options.mode, status, [
@@ -241,7 +244,7 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           const muted =
             event.options.mode === "toggle"
@@ -288,7 +291,7 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           await post(
             self,
@@ -309,7 +312,7 @@ export default function UpdateActions(self) {
       options: [deviceOption],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           await post(
             self,
@@ -337,10 +340,8 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
-          const app = (
-            await self.parseVariablesInString(String(event.options.app ?? ""))
-          ).trim();
+          const id = resolveId(event);
+          const app = String(event.options.app ?? "").trim();
           if (!id || !app) return;
           await post(self, `/api/devices/${encodeURIComponent(id)}/launch`, {
             app,
@@ -387,16 +388,13 @@ export default function UpdateActions(self) {
       ],
       callback: async (event) =>
         run(async () => {
-          const t = async (k) =>
-            (
-              await self.parseVariablesInString(String(event.options[k] ?? ""))
-            ).trim();
-          const id = await t("newid");
-          const address = await t("address");
+          const t = (k) => String(event.options[k] ?? "").trim();
+          const id = t("newid");
+          const address = t("address");
           if (!id || !address) return;
           await post(self, "/api/devices", {
             id,
-            name: (await t("name")) || id,
+            name: t("name") || id,
             address,
           });
         }),
@@ -408,7 +406,7 @@ export default function UpdateActions(self) {
       options: [deviceOption],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           await del(self, `/api/devices/${encodeURIComponent(id)}`);
         }),
@@ -420,7 +418,7 @@ export default function UpdateActions(self) {
       options: [deviceOption],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           await post(
             self,
@@ -435,7 +433,7 @@ export default function UpdateActions(self) {
       options: [deviceOption],
       callback: async (event) =>
         run(async () => {
-          const id = await resolveId(event);
+          const id = resolveId(event);
           if (!id) return;
           await del(self, `/api/devices/${encodeURIComponent(id)}/restreamer`);
         }),

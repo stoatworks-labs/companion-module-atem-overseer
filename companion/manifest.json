@@ -5,7 +5,7 @@
   "name": "atem-overseer",
   "shortname": "Atem Overseer",
   "description": "Drive a fleet of Blackmagic ATEM switchers through Atem Overseer — record and stream start/stop across one switcher or the whole fleet, PGM/ISO record mode, monitor mute, media player assignment and restreamer channels, with per-device record/stream/disk feedback.",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "license": "MIT",
   "repository": "git+https://github.com/stoatworks-labs/companion-module-atem-overseer.git",
   "bugs": "https://github.com/stoatworks-labs/companion-module-atem-overseer/issues",
