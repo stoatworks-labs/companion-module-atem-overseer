@@ -13,11 +13,11 @@ and stream across a fleet of Blackmagic ATEM switchers from one surface.
 
 ## Download
 
-**[v1.0.3](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/tag/v1.0.3)**
+**[v1.0.4](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/tag/v1.0.4)**
 
 This release contains:
 
-- [`atem-overseer-1.0.3.tgz`](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/download/v1.0.3/atem-overseer-1.0.3.tgz) — npm package, 25 KB
+- [`atem-overseer-1.0.4.tgz`](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/download/v1.0.4/atem-overseer-1.0.4.tgz) — npm package, 25 KB
 - [`companion-module-atem-overseer-pkg.tgz`](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases/latest/download/companion-module-atem-overseer-pkg.tgz) — npm package, 25 KB
 
 All builds, checksums and release notes: [github.com/stoatworks-labs/companion-module-atem-overseer/releases](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases).
