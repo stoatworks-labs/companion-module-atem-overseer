@@ -108,7 +108,10 @@ definitions.
 
 ## Installing
 
-It's not in the official Companion module store, so install it as a developer
+It's not in the official Companion module store. The quick way is to download
+`companion-module-atem-overseer-pkg.tgz` from the
+[releases page](https://github.com/stoatworks-labs/companion-module-atem-overseer/releases) and
+import it with Companion's **Modules → Import module package**. Or install it as a developer
 module through **Settings → Developer modules path**.
 
 <!-- attributions:start -->
