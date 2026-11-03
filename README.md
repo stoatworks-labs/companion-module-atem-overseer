@@ -8,6 +8,8 @@ A [Bitfocus Companion](https://bitfocus.io/companion) module for
 [Atem Overseer](https://github.com/stoatworks-labs/atem-overseer). It runs record
 and stream across a whole fleet of Blackmagic ATEM switchers from one surface.
 
+The [project page](https://stoatworks-labs.com/software/companion-atem-overseer/) has the downloads and the [user guide](https://stoatworks-labs.com/software/companion-atem-overseer/guide/).
+
 <!-- downloads:start -->
 
 ## Download
